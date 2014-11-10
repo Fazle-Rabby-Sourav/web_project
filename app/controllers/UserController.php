@@ -5,10 +5,6 @@ class UserController extends BaseController {
 	public function account($id)
 	{
 		$user = User::find($id);
-
-		
-
-
 		return View::make('users.account')
 						->with('title', 'Account')
 						->with('user', $user);

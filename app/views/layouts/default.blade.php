@@ -38,7 +38,7 @@
 						@else
 							<li><a href="{{ URL::route('account', Auth::user()->id) }}">Account</a></li>
 							<li><a href="{{ URL::route('logout') }}">Logout</a></li>
-							<li><a href="{{ URL::route('home') }}">Upload</a></li>
+							<li><a href="{{ URL::route('upload') }}">Upload</a></li>
 						@endif
 
 					</ul>

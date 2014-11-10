@@ -1,16 +1,25 @@
 @extends('layouts.default')
 
 @section('content')
-	<div class="starter-template">
-		<h1>Inspiring Photography</h1>
-		<!-- <p class="lead">introducing to iPhoto</p> -->
-		<h3>Introducing to New iPhoto<h3>
+			
+		@for($i=0; $i<count($photos); $i++)
 
-		<div>
-			<p class="ita"> Share and connect with the iPhoto Community. </p>
-			<p class="ita"> Stunning photos made easy. </p>
-			<p class="ita"> All your pictures in one place. </p>
-			<!-- <img src="B.jpg" alt="" class="img-rounded width="42" height="42" "> -->
+			@if($i == 0)
+				<div class="row">
+			@elseif($i%4 == 0)
+				</div>
+				<div class="row">
+			@endif
+				
+			<div class="col-md-3">
+	            <a href="{{ URL::route('photo.show', $photos[$i]->id) }}" class="thumbnail">
+	            	<img src="{{ URL::to('uploads/medium_'.$photos[$i]->file_url) }}" alt="...">
+	            </a>
+	            <div class="caption">
+	                <h3>{{ $photos[$i]->caption }}</h3>
+	                <p>{{ $photos[$i]->uploader->name }}</p>
+	            </div>
+        	</div>
+		@endfor
 		</div>
-	</div>
 @stop

@@ -35,5 +35,25 @@
     		<p class="lead">{{ $user->created_at }}</p>
 
 		</div>
-	</div>
+
+        @for($i=0; $i<count($user->uploadedPhotos); $i++)
+
+            @if($i == 0)
+                <div class="row">
+            @elseif($i%4 == 0)
+                </div>
+                <div class="row">
+            @endif
+                
+            <div class="col-md-3">
+                <a href="{{ URL::route('photo.show', $user->uploadedPhotos[$i]->id) }}" class="thumbnail">
+                    <img src="{{ URL::to('uploads/medium_'.$user->uploadedPhotos[$i]->file_url) }}" alt="...">
+                </a>
+                <div class="caption">
+                    <h3>{{ $user->uploadedPhotos[$i]->caption }}</h3>
+                    <p>{{ $user->uploadedPhotos[$i]->uploader->name }}</p>
+                </div>
+            </div>
+        @endfor
+        </div>	</div>
 @stop
