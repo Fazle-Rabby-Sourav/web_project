@@ -19,7 +19,19 @@
     		<p>Email Address:</p>
     		<p class="lead">{{ $user->email }}</p>
 
-    		<p>Created At:</p>
+            <p>Email Address:</p>
+            <p class="lead">{{ $user->address }}</p>
+            
+            <p>Gear:</p>
+            <p class="lead">{{ $user->gear }}</p>
+
+            <p>Contact:</p>
+            <p class="lead">{{ $user->contact }}</p>
+            
+            <p>Website:</p>
+            <p class="lead">{{ $user->website }}</p>
+
+    		<p>Joined iPhoto on:</p>
     		<p class="lead">{{ $user->created_at }}</p>
 
 		</div>

@@ -19,6 +19,24 @@
 	    			{{ Form::password('password', ["class"=>"form-control input-lg", "placeholder"=>"Password"]) }}
 	    			<p class="help-block">Leaving blank will not change the password.</p>
 	    		</div>
+
+	    		<div class="form-group">
+			    	  {{ Form::text('address', null,["class"=>"form-control input-lg", "placeholder"=>"Address"]) }}
+	    		</div>
+
+	    		<div class="form-group">
+	    	  		{{ Form::text('gear', null,["class"=>"form-control input-lg", "placeholder"=>"Gear/Equipment"]) }}
+	    		</div>
+
+	    		<div class="form-group">
+	    	  		{{ Form::text('contact', null,["class"=>"form-control input-lg", "placeholder"=>"Contact"]) }}
+	    		</div>
+
+	    		<div class="form-group">
+	    	  		{{ Form::text('website', null,["class"=>"form-control input-lg", "placeholder"=>"Website/Blog"]) }}
+	    		</div>
+
+
 	    		{{ Form::submit('Update Account', ['class'=>'btn btn-lg btn-success btn-block']) }}
 
 	    	{{ Form::close() }}

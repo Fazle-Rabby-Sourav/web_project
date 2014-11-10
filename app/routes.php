@@ -13,7 +13,6 @@ Route::group(['before' => 'guest'], function() {
 
 Route::group(['before' => 'auth'], function() {
 	Route::get('/logout', ['as'=> 'logout', 'uses' => 'AuthController@doLogout']);
-
 	// edit account
 	Route::get('/account/{id}/edit', ['as'=> 'account.edit', 'uses' => 'UserController@editAccount']);
 	Route::put('/account/{id}/edit', ['as'=> 'account.edit', 'uses' => 'UserController@doEditAccount']);

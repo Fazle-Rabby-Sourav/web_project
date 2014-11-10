@@ -5,6 +5,10 @@ class UserController extends BaseController {
 	public function account($id)
 	{
 		$user = User::find($id);
+
+		
+
+
 		return View::make('users.account')
 						->with('title', 'Account')
 						->with('user', $user);
@@ -28,7 +32,12 @@ class UserController extends BaseController {
 
 		$credentials = [
 			'name'		=>	Input::get('name'),
-			'email'		=>	Input::get('email')
+			'email'		=>	Input::get('email'),
+			'password'	=>	Input::get('password'),
+			'address'	=>	Input::get('address'),
+			'gear'		=>	Input::get('gear'),
+			'contact'	=>	Input::get('contact'),
+			'website'	=>	Input::get('website'),
 		];
 
 		$validation = Validator::make($credentials, $rules);
@@ -44,6 +53,10 @@ class UserController extends BaseController {
 			$user = User::find($id);
 			$user->name = Input::get('name');
 			$user->email = Input::get('email');
+			$user->address 	= Input::get('address');
+			$user->gear 	= Input::get('gear');
+			$user->contact 	= Input::get('contact');
+			$user->website 	= Input::get('website');
 
 			if(Input::has('password'))	$user->password = Hash::make(Input::get('password'));
 

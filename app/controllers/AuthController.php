@@ -67,7 +67,11 @@ class AuthController extends BaseController {
 		$credentials = [
 			'name'		=>	Input::get('name'),
 			'email'		=>	Input::get('email'),
-			'password'	=>	Input::get('password')
+			'password'	=>	Input::get('password'),
+			'address'	=>	Input::get('address'),
+			'gear'		=>	Input::get('gear'),
+			'contact'	=>	Input::get('contact'),
+			'website'	=>	Input::get('website'),
 		];
 
 		$validation = Validator::make($credentials, $rules);
@@ -81,9 +85,16 @@ class AuthController extends BaseController {
 		else
 		{
 			$user = new User;
-			$user->name = Input::get('name');
-			$user->email = Input::get('email');
+			$user->name 	= Input::get('name');
+			$user->email 	= Input::get('email');
 			$user->password = Hash::make(Input::get('password'));
+			$user->address 	= Input::get('address');
+			$user->gear 	= Input::get('gear');
+			$user->contact 	= Input::get('contact');
+			$user->website 	= Input::get('website');
+
+
+
 
 			if($user->save())
 			{

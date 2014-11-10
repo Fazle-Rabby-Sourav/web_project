@@ -25,6 +25,44 @@
 			    			{{ Form::password('password', ["class"=>"form-control input-lg", "placeholder"=>"Password"]) }}
 			    			<!-- <input class="form-control" placeholder="Password" name="password" type="password" value=""> -->
 			    		</div>
+
+			    		<div class="form-group">
+			    	  		{{ Form::text('address', null,["class"=>"form-control input-lg", "placeholder"=>"Address"]) }}
+			    		</div>
+
+			    		<div class="form-group">
+			    	  		{{ Form::text('gear', null,["class"=>"form-control input-lg", "placeholder"=>"Gear/Equipment"]) }}
+			    		</div>
+
+			    		<div class="form-group">
+			    	  		{{ Form::text('contact', null,["class"=>"form-control input-lg", "placeholder"=>"Contact"]) }}
+			    		</div>
+
+			    		<div class="form-group">
+			    	  		{{ Form::text('website', null,["class"=>"form-control input-lg", "placeholder"=>"Website/Blog"]) }}
+			    		</div>
+
+
+				    		<div class="radio">
+							  <label>
+							    	<input type="radio" name="optionsRadios" id="optionsRadios1" value="male" checked>
+							   		Male
+							  </label>
+						</div>
+
+
+			    		<div class="radio">
+							  <label>
+								    <input type="radio" name="optionsRadios" id="optionsRadios2" value="female">
+								    Femal
+							  </label>
+						</div>
+
+
+
+
+
+
 			    		{{ Form::submit('Registration', ['class'=>'btn btn-lg btn-success btn-block']) }}
 
 			    		<!-- <input class="btn btn-lg btn-success btn-block" type="submit" value="Login"> -->
