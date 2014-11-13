@@ -40,9 +40,8 @@
 
 			    		<div class="form-group">
 			    	  		{{ Form::text('website', null,["class"=>"form-control input-lg", "placeholder"=>"Website/Blog"]) }}
+			    		
 			    		</div>
-
-
 				    		<div class="radio">
 							  <label>
 							    	<input type="radio" name="optionsRadios" id="optionsRadios1" value="male" checked>

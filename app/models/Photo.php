@@ -9,6 +9,11 @@ class Photo extends Eloquent {
 		return $this->belongsTo('User', 'user_id');
 	}
 
+/*	public function type()
+	{
+		return $this->belongsTo('Category', 'category_id');
+	}*/
+
 	public function likes()
 	{
 		return $this->hasMany('Like', 'photo_id');

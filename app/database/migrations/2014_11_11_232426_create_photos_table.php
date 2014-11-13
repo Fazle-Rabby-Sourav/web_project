@@ -16,6 +16,7 @@ class CreatePhotosTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('user_id')->unsigned();
+			/*$table->integer('category_id')->unsigned();*/
 			$table->string('caption');
 			$table->text('details');
 			$table->string('file_url');
@@ -25,6 +26,11 @@ class CreatePhotosTable extends Migration {
 				->references('id')->on('users')
 				->onUpdate('cascade')
 				->onDelete('cascade');
+
+			/*$table->foreign('category_id')
+				->references('id')->on('categories')
+				->onUpdate('cascade')
+				->onDelete('cascade');*/
 		});
 	}
 

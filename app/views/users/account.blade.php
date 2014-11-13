@@ -36,6 +36,8 @@
 
 		</div>
 
+        <h2> Photo Gallery </h2>
+
         @for($i=0; $i<count($user->uploadedPhotos); $i++)
 
             @if($i == 0)

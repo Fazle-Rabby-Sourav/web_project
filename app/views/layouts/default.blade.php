@@ -16,7 +16,7 @@
 		{{ HTML::style('css/custom.css') }}
 	</head>
 
-	<body>
+	<body oncontextmenu="return false">
 	  	<!-- navigation menu -->
 	    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container">
@@ -32,6 +32,7 @@
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="{{ URL::route('home') }}">Home</a></li>
+						<li><a href="{{ URL::route('category') }}">Category</a></li>
 						@if(!Auth::check())
 							<li><a href="{{ URL::route('login') }}">Login</a></li>
 							<li><a href="{{ URL::route('registration') }}">Registration</a></li>
@@ -55,7 +56,5 @@
 	    <!-- javascripts -->
 	    {{ HTML::script('js/jquery.min.js') }}
 	    {{ HTML::script('js/bootstrap.min.js') }}
-	    
 	</body>
-
 </html>

@@ -1,6 +1,8 @@
 <?php
-
-Route::get('/', ['as'=> 'home', 'uses' => 'PhotoController@index']);
+Route::get('/', ['as'=> 'start', 'uses' => 'PhotoController@start']);
+Route::get('/home', ['as'=> 'home', 'uses' => 'PhotoController@index']);
+Route::get('/category', ['as'=> 'category', 'uses' => 'PhotoController@category']);
+Route::get('/categoryShow/{id}', ['as'=> 'categoryShow', 'uses' => 'PhotoController@categoryShow']);
 Route::get('/account/{id}', ['as'=> 'account', 'uses' => 'UserController@account']);
 Route::get('/photo/{id}', ['as'=> 'photo.show', 'uses' => 'PhotoController@show']);
 
@@ -21,5 +23,7 @@ Route::group(['before' => 'auth'], function() {
 	Route::post('/upload', ['as'=> 'upload', 'uses' => 'PhotoController@doCreate']);
 	Route::get('/photo/{id}/like', ['as'=> 'photo.like.add', 'uses' => 'PhotoController@doLike']);
 	Route::get('/photo/{id}/unlike', ['as'=> 'photo.like.remove', 'uses' => 'PhotoController@doUnlike']);
+	Route::get('/photo/{id}/remove', ['as'=> 'photo.remove', 'uses' => 'PhotoController@doRemove']);
+
 });
 

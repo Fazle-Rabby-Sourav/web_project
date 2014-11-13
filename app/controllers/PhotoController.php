@@ -2,14 +2,28 @@
 
 class PhotoController extends BaseController {
 
-	
+	public function start()
+	{
+		/*$photos = Photo::all()
+			->orderBy('created_at', 'desc')
+			->get();*/
+
+		return View::make('photos.start')
+						->with('title', 'Home');
+	}
+
 	public function index()
 	{
-		$photos = Photo::get();
+		$photos = Photo::orderBy('created_at', 'desc')->get();
+		
+		//$allphotos->latest()->get();
+					/*->orderBy('created_at');
+					->get();*/
+
 
 		return View::make('photos.index')
 						->with('title', 'Home')
-						->with('photos', $photos);
+						->with('photos', $photos );
 	}
 
 	public function create()
@@ -66,7 +80,8 @@ class PhotoController extends BaseController {
 			        		->save($destinationPath."/thumbnail_".$fileName);
 
 			$photo->file_url = $fileName;
-
+			$photo->category_id = Input::get('optionsRadios');
+			
 			if($photo->save())
 			{
 				return Redirect::route('account', ['id' => Auth::id()])
@@ -84,7 +99,24 @@ class PhotoController extends BaseController {
 	public function show($id)
 	{
 		$photo = Photo::find($id);
+		$numOfPhotos= count(Photo::all());
+		
+		$categoryID = $photo->category_id;
+		$cat_name = DB::table('categories')->where('id', $categoryID)->pluck('cat_name');
 
+		$isAuth = false;
+		$x=$photo->user_id;
+		
+		
+
+
+		$uploader_name= User::where('id', '=', $x)->pluck('name');
+
+		if($photo->user_id == Auth::id() )
+		{
+			$isAuth = true;
+		}
+		
 		$isLiked = false;
 		foreach ($photo->likes as $key => $like)
 		{
@@ -98,7 +130,12 @@ class PhotoController extends BaseController {
 		return View::make('photos.show')
 						->with('title', $photo->caption)
 						->with('photo', $photo)
-						->with('isLiked', $isLiked);
+						->with('isLiked', $isLiked)
+						->with('numOfPhotos', $numOfPhotos)
+						->with('isAuth', $isAuth)
+						->with('name', $uploader_name)
+						->with('x', $x)
+						->with('cat_name', $cat_name);
 	}
 
 	public function doLike($id)
@@ -120,6 +157,31 @@ class PhotoController extends BaseController {
 
 		return Redirect::route('photo.show', ['id' => $id])
 									->with('success', 'Photo has been unliked!');
+	}
+
+	public function category()
+	{
+		//return 'ok';
+		return View::make('photos.categoryList')
+							->with('title', 'Category');
+									
+	}
+
+	public function categoryShow($id)
+	{
+		$photos = Photo::where('category_id', '=',  $id)->get();
+
+		return View::make('photos.index')
+						->with('title', 'Home')
+						->with('photos', $photos);
+	}
+
+	public function doRemove($id)
+	{
+		$photo = Photo::where('user_id', '=', Auth::id())
+						->where('id', '=', $id)
+						->delete();
+		return Redirect::route('home');
 	}
 
 }
